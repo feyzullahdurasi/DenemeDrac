@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App.Default"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_API_KEY"/>
         <activity
             android:name=".speed.SpeedViewActivity"
             android:exported="false" />

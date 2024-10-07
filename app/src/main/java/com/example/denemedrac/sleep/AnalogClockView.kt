@@ -35,7 +35,7 @@ class AnalogClockView @JvmOverloads constructor(
         val radius = Math.min(centerX, centerY) - 20
 
         // Draw the clock circle
-        canvas?.drawCircle(centerX, centerY, radius, paint)
+        canvas.drawCircle(centerX, centerY, radius, paint)
 
         // Get current time
         val hour = calendar.get(Calendar.HOUR)
