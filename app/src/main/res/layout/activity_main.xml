@@ -3,122 +3,152 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/button_bar">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Include the different views here -->
-            <include
-                android:id="@+id/map_view"
-                layout="@layout/activity_map"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                android:id="@+id/contacts_view"
-                layout="@layout/activity_contact"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                android:id="@+id/music_view"
-                layout="@layout/activity_music_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                android:id="@+id/speedometer_view"
-                layout="@layout/activity_speedometer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                android:id="@+id/speed_view"
-                layout="@layout/activity_speed_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-    </ScrollView>
-
     <LinearLayout
-        android:id="@+id/button_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@android:color/darker_gray"
-        android:orientation="horizontal"
-        android:padding="8dp">
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_sleep_mode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sleep" />
+        <!-- Include the different views here -->
+        <include
+            android:id="@+id/map_view"
+            layout="@layout/activity_map"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/btn_shopping"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Shop" />
+        <include
+            android:id="@+id/contacts_view"
+            layout="@layout/activity_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/btn_settings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Settings" />
+        <include
+            android:id="@+id/music_view"
+            layout="@layout/activity_music_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/btn_music"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Music" />
+        <include
+            android:id="@+id/speedometer_view"
+            layout="@layout/activity_speedometer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/btn_speedometer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Speedometer" />
-
-        <Button
-            android:id="@+id/btn_speed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Speed" />
-
-        <Button
-            android:id="@+id/btn_maps"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Maps" />
-
-        <Button
-            android:id="@+id/btn_contacts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Contacts" />
-
-        <Button
-            android:id="@+id/hide_button_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hide" />
+        <include
+            android:id="@+id/speed_view"
+            layout="@layout/activity_speed_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/show_button_bar"
-        android:layout_width="wrap_content"
+        android:id="@+id/hide_button_bar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_above="@+id/horizontalScrollView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-15dp"
+        android:drawableTop="@drawable/arrow_up_white"
+        android:background="@drawable/round_button_background"
+        android:visibility="visible" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Show Menu"
-        android:visibility="gone" />
+        android:background="@android:color/darker_gray">
+
+        <LinearLayout
+            android:id="@+id/button_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/darker_gray"
+            android:orientation="horizontal"
+            android:paddingVertical="10dp">
+
+            <Button
+                android:id="@+id/btn_sleep_mode"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:drawableRight="@drawable/sleep_mode_white"
+                android:drawablePadding="4dp"
+                android:text=""
+                android:backgroundTint="@android:color/black"
+                android:layout_marginHorizontal="0dp" />
+
+            <Button
+                android:id="@+id/btn_maps"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:drawableRight="@drawable/map_white"
+                android:drawablePadding="4dp"
+                android:text=""
+                android:backgroundTint="@android:color/holo_blue_bright"
+                android:layout_marginHorizontal="4dp" />
+
+            <Button
+                android:id="@+id/btn_contacts"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:drawableRight="@drawable/phone_white"
+                android:drawablePadding="4dp"
+                android:text=""
+                android:backgroundTint="@android:color/holo_green_light"
+                android:layout_marginHorizontal="4dp" />
+
+            <Button
+                android:id="@+id/btn_music"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:drawableRight="@drawable/music_note_white"
+                android:drawablePadding="4dp"
+                android:text=""
+                android:backgroundTint="@android:color/holo_purple"
+                android:layout_marginHorizontal="4dp" />
+
+            <Button
+                android:id="@+id/btn_speedometer"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:drawableRight="@drawable/car_white"
+                android:drawablePadding="4dp"
+                android:text=""
+                android:backgroundTint="@android:color/holo_orange_dark"
+                android:layout_marginHorizontal="4dp" />
+
+            <Button
+                android:id="@+id/btn_speed"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:drawableRight="@drawable/speed_white"
+                android:drawablePadding="4dp"
+                android:text=""
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:layout_marginHorizontal="4dp" />
+
+            <Button
+                android:id="@+id/btn_shopping"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:drawableRight="@drawable/shopping_cart_white"
+                android:drawablePadding="4dp"
+                android:text=""
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:layout_marginHorizontal="4dp" />
+
+            <Button
+                android:id="@+id/btn_settings"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:drawableRight="@drawable/settings_white"
+                android:drawablePadding="4dp"
+                android:text=""
+                android:backgroundTint="@android:color/black"
+                android:layout_marginHorizontal="4dp" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
 
 </RelativeLayout>

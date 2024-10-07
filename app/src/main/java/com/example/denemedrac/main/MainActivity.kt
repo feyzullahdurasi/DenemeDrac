@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         buttonBar = findViewById(R.id.button_bar)
-        showButtonBarButton = findViewById(R.id.show_button_bar)
+        showButtonBarButton = findViewById(R.id.hide_button_bar)
 
         setupButtonBar()
         setupActiveViews()
