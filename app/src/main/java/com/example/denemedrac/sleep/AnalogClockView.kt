@@ -14,45 +14,87 @@ class AnalogClockView @JvmOverloads constructor(
 
     private val paint = Paint().apply {
         isAntiAlias = true
-        strokeWidth = 4f
+        strokeWidth = 8f // Çerçevenin kalınlığını artırıyoruz
         style = Paint.Style.STROKE
         color = Color.WHITE
     }
 
     private val redPaint = Paint().apply {
         isAntiAlias = true
-        strokeWidth = 2f
+        strokeWidth = 4f
         style = Paint.Style.STROKE
         color = Color.RED
+    }
+
+    private val numberPaint = Paint().apply {
+        isAntiAlias = true
+        color = Color.WHITE
+        textSize = 50f // Rakamlar için büyük font boyutu
+        textAlign = Paint.Align.CENTER
     }
 
     private val calendar = Calendar.getInstance()
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+
+        // Her çizimde calendar objesini güncelle
+        calendar.timeInMillis = System.currentTimeMillis()
+
         val centerX = width / 2f
         val centerY = height / 2f
-        val radius = Math.min(centerX, centerY) - 20
+        val radius = Math.min(centerX, centerY)
 
-        // Draw the clock circle
+        // Saatin çerçevesini çiz
         canvas.drawCircle(centerX, centerY, radius, paint)
 
-        // Get current time
+        // Saatin rakamlarını çiz
+        drawNumerals(canvas, centerX, centerY, radius)
+
+        // Anlık zamanı al
         val hour = calendar.get(Calendar.HOUR)
         val minute = calendar.get(Calendar.MINUTE)
         val second = calendar.get(Calendar.SECOND)
 
-        // Draw hour hand
+        // Saat göstergesini çiz
         drawHand(canvas, hour + minute / 60.0, 12, centerX, centerY, radius * 0.5, paint)
 
-        // Draw minute hand
+        // Dakika göstergesini çiz
         drawHand(canvas, minute + second / 60.0, 60, centerX, centerY, radius * 0.7, paint)
 
-        // Draw second hand
+        // Saniye göstergesini çiz
         drawHand(canvas, second.toDouble(), 60, centerX, centerY, radius * 0.9, redPaint)
 
-        // Invalidate view for the next tick
+        // Her saniye saatin güncellenmesi için view'i yeniden çiz
         postInvalidateDelayed(1000)
+    }
+
+    // Saatin 12, 3, 6, 9 rakamlarını ve diğer çizgilerini ekliyoruz
+    private fun drawNumerals(canvas: Canvas, centerX: Float, centerY: Float, radius: Float) {
+        val numbers = arrayOf("12", "3", "6", "9")
+        val angleStep = 90 // Rakamlar için 90 derece aralık
+        for (i in numbers.indices) {
+            val angle = Math.toRadians((i * angleStep - 90).toDouble())
+            val x = centerX + Math.cos(angle) * (radius - 60)
+            val y = centerY + Math.sin(angle) * (radius - 60) + numberPaint.textSize / 3
+            canvas.drawText(numbers[i], x.toFloat(), y.toFloat(), numberPaint)
+        }
+
+        // 12 saat çizgisini ekleme
+        for (i in 0 until 12) {
+            val angle = Math.toRadians(i * 30.0 - 90) // 30 derece aralıklar
+            val isMajorLine = (i % 3 == 0) // 3, 6, 9 ve 12 yönleri için uzun çizgi
+
+            // Çizginin uzunluğunu ayarlıyoruz
+            val lineStart = if (isMajorLine) radius - 30 else radius - 20
+            val startX = centerX + Math.cos(angle) * lineStart
+            val startY = centerY + Math.sin(angle) * lineStart
+            val stopX = centerX + Math.cos(angle) * radius
+            val stopY = centerY + Math.sin(angle) * radius
+
+            // Çizgiyi çiz
+            canvas.drawLine(startX.toFloat(), startY.toFloat(), stopX.toFloat(), stopY.toFloat(), paint)
+        }
     }
 
     private fun drawHand(

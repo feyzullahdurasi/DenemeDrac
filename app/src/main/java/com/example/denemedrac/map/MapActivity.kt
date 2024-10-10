@@ -41,7 +41,7 @@ class MapActivity : AppCompatActivity() {
     }
 
     private fun setupMap() {
-        map.isMyLocationEnabled = true
+        //map.isMyLocationEnabled = true
         map.uiSettings.isCompassEnabled = true
         map.uiSettings.isZoomControlsEnabled = true
         map.uiSettings.isMyLocationButtonEnabled = true

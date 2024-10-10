@@ -1,6 +1,7 @@
 package com.example.denemedrac.begin
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
@@ -9,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.denemedrac.R
+import com.example.denemedrac.main.MainActivity
 
 class OnboardingActivity : AppCompatActivity() {
 
@@ -52,6 +54,10 @@ class OnboardingActivity : AppCompatActivity() {
         editor.apply()
 
         Toast.makeText(this, "User info saved", Toast.LENGTH_SHORT).show()
-        finish() // Close the onboarding screen
+
+        // Start MainActivity after saving user info
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish() // Close OnboardingActivity
     }
 }

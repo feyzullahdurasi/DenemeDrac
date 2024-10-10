@@ -1,12 +1,12 @@
 package com.example.denemedrac.sleep
 
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.denemedrac.R
+import com.example.denemedrac.base.BaseActivity
 
-class SleepModeActivity : AppCompatActivity() {
+class SleepModeActivity : BaseActivity() {
 
     private lateinit var clockView: AnalogClockView
 
