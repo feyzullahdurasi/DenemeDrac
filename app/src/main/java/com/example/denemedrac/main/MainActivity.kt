@@ -1,5 +1,6 @@
 package com.example.denemedrac.main
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
             if (isUserInfoSaved()) {
                 // Go to WelcomeMessageActivity for the first time
                 startActivity(Intent(this, WelcomeMessageActivity::class.java))
+                isUserInfoSaved().also { sharedPreferences.edit().putBoolean("isUserInfoSaved", false).apply() }
             }
         }
 
@@ -88,14 +90,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun toggleButtonBar() {
-        if (buttonBar.visibility == View.VISIBLE) {
+        val rotateAnimation = if (buttonBar.visibility == View.VISIBLE) {
             buttonBar.visibility = View.GONE
-            showButtonBarButton.visibility = View.VISIBLE
+            ObjectAnimator.ofFloat(showButtonBarButton, "rotation", 180f, 0f)
         } else {
             buttonBar.visibility = View.VISIBLE
-            showButtonBarButton.visibility = View.GONE
+            ObjectAnimator.ofFloat(showButtonBarButton, "rotation", 0f, 180f)
         }
+
+        rotateAnimation.duration = 300 // 300ms animasyon süresi
+        rotateAnimation.start()
     }
+
 
     private fun isUserInfoSaved(): Boolean {
         return sharedPreferences.getBoolean("isUserInfoSaved", false)

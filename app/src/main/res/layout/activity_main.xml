@@ -50,7 +50,9 @@
         android:layout_marginBottom="-15dp"
         android:drawableTop="@drawable/arrow_up_white"
         android:background="@drawable/round_button_background"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:rotation="0"
+        android:transitionName="rotate_transition" />
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"

@@ -16,7 +16,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:background="#FFFFFF">
+        android:background="@android:color/white"
+        android:elevation="4dp"
+        android:layout_alignParentTop="true"
+        android:layout_margin="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@android:color/darker_gray">
 
         <EditText
             android:id="@+id/search_edit_text"
@@ -24,13 +31,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="Search for location..."
+            android:background="@drawable/rounded_edit_text"
+            android:padding="12dp"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:drawableEnd="@drawable/search_icon"
+            android:textColor="@android:color/black"
             tools:ignore="TouchTargetSizeCheck" />
-
-        <Button
-            android:id="@+id/search_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search" />
 
     </LinearLayout>
 

@@ -35,7 +35,7 @@ class WelcomeMessageActivity : AppCompatActivity() {
             // Start MainActivity
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            // Finish WelcomeMessageActivity so it doesn't show again when pressing back
+
             finish()
         }, 2000) // 2000 milliseconds = 2 seconds
     }

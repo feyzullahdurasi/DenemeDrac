@@ -1,8 +1,10 @@
 package com.example.denemedrac.map
 
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.denemedrac.R
@@ -24,7 +26,6 @@ class MapActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(MapViewModel::class.java)
 
         searchEditText = findViewById(R.id.search_edit_text)
-        val searchButton: Button = findViewById(R.id.search_button)
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -33,9 +34,15 @@ class MapActivity : AppCompatActivity() {
             setupMap()
         }
 
-        searchButton.setOnClickListener {
-            viewModel.searchPlaces(searchEditText.text.toString())
-        }
+        // Klavye üzerindeki arama tuşu ile arama işlemini tetikle
+        searchEditText.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                // Arama işlemi
+                viewModel.searchPlaces(searchEditText.text.toString())
+                return@OnEditorActionListener true
+            }
+            false
+        })
 
         observeViewModel()
     }
