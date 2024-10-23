@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/youtubeMusicFragment">
+
+    <fragment
+        android:id="@+id/youtubeMusicFragment"
+        android:name="com.example.denemedrac.music.youtubeMusic.YoutubeMusicFragment"
+        android:label="Youtube Music">
+        <action
+            android:id="@+id/action_youtubeMusicFragment_to_videoDetailFragment"
+            app:destination="@id/videoDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/videoDetailFragment"
+        android:name="com.example.denemedrac.music.youtubeMusic.YtVideoDetailFragment"
+        android:label="Video Detail">
+        <argument
+            android:name="video"
+            app:argType="com.example.denemedrac.model.Video" />
+    </fragment>
+
+</navigation>
