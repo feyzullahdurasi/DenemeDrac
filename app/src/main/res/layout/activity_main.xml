@@ -1,120 +1,141 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main_container"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
+    <!-- İçerik konteyneri -->
     <LinearLayout
-        android:id="@+id/content_container"
+        android:id="@+id/main_container"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- Include the different views here -->
-        <include
-            android:id="@+id/map_view"
-            layout="@layout/activity_map"
+        <LinearLayout
+            android:id="@+id/content_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <include
-            android:id="@+id/contacts_view"
-            layout="@layout/activity_contact"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <include
+                android:id="@+id/map_view"
+                layout="@layout/activity_map"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <include
-            android:id="@+id/music_view"
-            layout="@layout/activity_music_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <include
+                android:id="@+id/contacts_view"
+                layout="@layout/activity_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <include
-            android:id="@+id/speedometer_view"
-            layout="@layout/activity_speedometer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <include
+                android:id="@+id/music_view"
+                layout="@layout/activity_music_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <include
-            android:id="@+id/speed_view"
-            layout="@layout/activity_speed_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <include
+                android:id="@+id/speedometer_view"
+                layout="@layout/activity_speedometer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/speed_view"
+                layout="@layout/activity_speed_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Button Bar'ı ekranın altına sabitle -->
+    <LinearLayout
+        android:id="@+id/button_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:background="#F0F0F0"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="4dp"
+        android:elevation="8dp">
+
+        <Button
+            android:id="@+id/btn_sleep_mode"
+            style="@style/CustomButtonBarButton"
+            android:backgroundTint="#2C3E50"
+            android:drawableTop="@drawable/sleep_mode_white"
+            android:text="Sleep"/>
+
+        <Button
+            android:id="@+id/btn_maps"
+            style="@style/CustomButtonBarButton"
+            android:backgroundTint="#3498DB"
+            android:drawableTop="@drawable/map_white"
+            android:text="Maps"/>
+
+        <Button
+            android:id="@+id/btn_contacts"
+            style="@style/CustomButtonBarButton"
+            android:backgroundTint="#2ECC71"
+            android:drawableTop="@drawable/phone_white"
+            android:text="Contacts"/>
+
+        <Button
+            android:id="@+id/btn_music"
+            style="@style/CustomButtonBarButton"
+            android:backgroundTint="#9B59B6"
+            android:drawableTop="@drawable/music_note_white"
+            android:text="Music"/>
+
+        <Button
+            android:id="@+id/btn_speedometer"
+            style="@style/CustomButtonBarButton"
+            android:backgroundTint="#F39C12"
+            android:drawableTop="@drawable/car_white"
+            android:text="Speed"/>
+
+        <Button
+            android:id="@+id/btn_speed"
+            style="@style/CustomButtonBarButton"
+            android:backgroundTint="#E74C3C"
+            android:drawableTop="@drawable/speed_white"
+            android:text="Meter"/>
+
+        <Button
+            android:id="@+id/btn_shopping"
+            style="@style/CustomButtonBarButton"
+            android:backgroundTint="#3498DB"
+            android:drawableTop="@drawable/shopping_cart_white"
+            android:text="Shop"/>
+
+        <Button
+            android:id="@+id/btn_settings"
+            style="@style/CustomButtonBarButton"
+            android:backgroundTint="#34495E"
+            android:drawableTop="@drawable/settings_white"
+            android:text="Settings"/>
 
     </LinearLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <!-- Hide Button'u button bar'ın üzerinde ve merkezinde konumlandır -->
+    <!-- Hide Button'u button bar'ın üzerinde ve önünde konumlandır -->
+    <Button
+        android:id="@+id/hide_button_bar"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/hide_button_background"
+        android:text="Hide/Show"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:drawableTop="@drawable/arrow_up_white"
+        android:rotation="0"
+        android:paddingTop="4dp"
+        android:elevation="10dp"
+        android:transitionName="rotate_transition" />
 
-        <Button
-            android:id="@+id/hide_button_bar"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="-24dp"
-            android:background="@drawable/round_button_background"
-            android:drawableTop="@drawable/arrow_up_white"
-            android:rotation="0"
-            android:transitionName="rotate_transition" />
-
-        <!-- Butonların hizalanması dinamik olarak değişecek -->
-        <LinearLayout
-            android:id="@+id/button_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingVertical="10dp">
-
-            <Button
-                android:id="@+id/btn_sleep_mode"
-                style="@style/ButtonBarButton"
-                android:drawableTop="@drawable/sleep_mode_white"
-                android:backgroundTint="@android:color/black" />
-
-            <Button
-                android:id="@+id/btn_maps"
-                style="@style/ButtonBarButton"
-                android:drawableTop="@drawable/map_white"
-                android:backgroundTint="@android:color/holo_blue_bright" />
-
-            <Button
-                android:id="@+id/btn_contacts"
-                style="@style/ButtonBarButton"
-                android:drawableTop="@drawable/phone_white"
-                android:backgroundTint="@android:color/holo_green_light" />
-
-            <Button
-                android:id="@+id/btn_music"
-                style="@style/ButtonBarButton"
-                android:drawableTop="@drawable/music_note_white"
-                android:backgroundTint="@android:color/holo_purple" />
-
-            <Button
-                android:id="@+id/btn_speedometer"
-                style="@style/ButtonBarButton"
-                android:drawableTop="@drawable/car_white"
-                android:backgroundTint="@android:color/holo_orange_dark" />
-
-            <Button
-                android:id="@+id/btn_speed"
-                style="@style/ButtonBarButton"
-                android:drawableTop="@drawable/speed_white"
-                android:backgroundTint="@android:color/holo_red_dark" />
-
-            <Button
-                android:id="@+id/btn_shopping"
-                style="@style/ButtonBarButton"
-                android:drawableTop="@drawable/shopping_cart_white"
-                android:backgroundTint="@android:color/holo_blue_dark" />
-
-            <Button
-                android:id="@+id/btn_settings"
-                style="@style/ButtonBarButton"
-                android:drawableTop="@drawable/settings_white"
-                android:backgroundTint="@android:color/black" />
-
-        </LinearLayout>
-    </FrameLayout>
-</LinearLayout>
+</FrameLayout>
