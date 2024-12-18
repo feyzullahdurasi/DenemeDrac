@@ -1,17 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@android:color/white"
+    tools:context=".music.spotify.SpotifyFragment">
 
-    <WebView
-        android:id="@+id/spotify_webview"
+    <!-- Şarkı ve Sanatçı Bilgileri -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <Button
-        android:id="@+id/spotify_login_button"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Login to Spotify"/>
-</FrameLayout>
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Albüm Kapağı -->
+        <ImageView
+            android:id="@+id/album_art"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/album_art"
+            android:src="@drawable/arrow_back_white" />
+
+        <!-- Şarkı Başlığı ve Sanatçı Adı -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp">
+
+            <TextView
+                android:id="@+id/track_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Şarkı Adı"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/artist_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sanatçı Adı"
+                android:textSize="16sp"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Şarkı İlerleme Çubuğu -->
+    <SeekBar
+        android:id="@+id/song_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:progressTint="@android:color/holo_green_dark" />
+
+    <!-- Oynatma Kontrolleri -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+        <!-- Önceki Şarkı -->
+        <ImageButton
+            android:id="@+id/btn_previous"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/arrow_back_white"
+            android:contentDescription="deneme"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+        <!-- Oynat / Duraklat -->
+        <ImageButton
+            android:id="@+id/btn_play_pause"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginHorizontal="32dp"
+            android:src="@drawable/arrow_back_white"
+            android:contentDescription="deneme"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+        <!-- Sonraki Şarkı -->
+        <ImageButton
+            android:id="@+id/btn_next"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/arrow_back_white"
+            android:contentDescription="deneme"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+    </LinearLayout>
+
+    <!-- Karıştırma ve Tekrar Kontrolleri -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+        <!-- Karıştır -->
+        <ImageButton
+            android:id="@+id/btn_shuffle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/arrow_back_white"
+            android:contentDescription="deneme"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+        <!-- Tekrar -->
+        <ImageButton
+            android:id="@+id/btn_repeat"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/arrow_back_white"
+            android:contentDescription="deneme"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_marginStart="32dp" />
+    </LinearLayout>
+</LinearLayout>

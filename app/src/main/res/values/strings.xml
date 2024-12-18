@@ -2,4 +2,8 @@
     <string name="app_name">DenemeDrac</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="album_art">Albüm Kapağı</string>
+    <string name="track_title_placeholder">Şarkı Başlığı</string>
+    <string name="artist_name_placeholder">Sanatçı Adı</string>
+    <string name="error_message_placeholder">Bir hata oluştu!</string>
 </resources>

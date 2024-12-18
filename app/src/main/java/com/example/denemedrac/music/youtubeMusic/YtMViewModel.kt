@@ -13,38 +13,40 @@ import retrofit2.Response
 class YtMViewModel : ViewModel() {
 
     private val _channel = MutableLiveData<ChannelModel?>()
-    val channel = _channel
+    val channel: LiveData<ChannelModel?> = _channel
+
     private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading = _isLoading
+    val isLoading: LiveData<Boolean> = _isLoading
+
     private val _message = MutableLiveData<String>()
-    val message = _message
+    val message: LiveData<String> = _message
 
     init {
-        getChannel()
+        fetchChannelData()
     }
 
-    private fun getChannel(){
+    fun fetchChannelData(channelId: String = "YOUTUBE_API_KEY") {
         _isLoading.value = true
-        val client = ApiConfig.getService().getChannel("snippet", "UCkXmLjEr95LVtGuIm3l2dPg")
-        client.enqueue(object : Callback<ChannelModel>{
+        val client = ApiConfig.getService().getChannel("snippet", channelId)
+        client.enqueue(object : Callback<ChannelModel> {
             override fun onResponse(call: Call<ChannelModel>, response: Response<ChannelModel>) {
                 _isLoading.value = false
-                if (response.isSuccessful){
+                if (response.isSuccessful) {
                     val data = response.body()
-                    if (data != null && data.items.isNotEmpty()){
+                    if (data != null && data.items.isNotEmpty()) {
                         _channel.value = data
                     } else {
-                        _message.value = "No channel"
+                        _message.value = "No channel data found"
                     }
                 } else {
-                    _message.value = response.message()
+                    _message.value = "Error: ${response.code()} - ${response.message()}"
                 }
             }
 
             override fun onFailure(call: Call<ChannelModel>, t: Throwable) {
                 _isLoading.value = false
-                Log.e(TAG, "Failed: ", t)
-                _message.value = t.message
+                Log.e(TAG, "Channel fetch failed", t)
+                _message.value = "Network error: ${t.localizedMessage}"
             }
         })
     }
@@ -52,5 +54,4 @@ class YtMViewModel : ViewModel() {
     companion object {
         private val TAG = YtMViewModel::class.java.simpleName
     }
-
 }

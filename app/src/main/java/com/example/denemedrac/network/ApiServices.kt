@@ -7,10 +7,10 @@ import retrofit2.http.Query
 
 interface ApiServices {
 
-    @GET("channels")
+    @GET("youtube/v3/channels")
     fun getChannel(
         @Query("part") part: String,
-        @Query("id") id: String
-    ) : Call<ChannelModel>
-
+        @Query("id") channelId: String,
+        @Query("key") apiKey: String = "YOUTUBE_API_KEY" // API Anahtarınızı buraya koyun
+    ): Call<ChannelModel>
 }

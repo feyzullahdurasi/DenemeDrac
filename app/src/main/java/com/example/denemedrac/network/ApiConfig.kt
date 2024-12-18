@@ -1,6 +1,5 @@
 package com.example.denemedrac.network
 
-
 import com.example.denemedrac.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -39,5 +38,4 @@ class ApiConfig {
 
         }
     }
-
 }

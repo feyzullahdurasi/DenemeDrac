@@ -72,6 +72,7 @@ dependencies {
     implementation(libs.play.services.location)
     implementation (libs.androidx.appcompat.v130)
     implementation (libs.glide)
+    implementation (libs.androidx.viewpager2)
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
     implementation (libs.logging.interceptor)
@@ -84,5 +85,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
+    // Annotation
+    implementation (libs.androidx.annotation)
+    //kapt ("com.github.bumptech.glide:compiler:4.12.0")
 }
